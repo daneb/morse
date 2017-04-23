@@ -54,7 +54,7 @@ module Morse
       forward_index = index + 1 < input_char_array.length ? (index + 1) : index
       suffix = '' if input_char_array[forward_index].strip.empty?
       suffix = '' if (index + 1) == input_char_array.length
-      translation.concat(lookup.fetch(letter, '')).concat(suffix)
+      translation.concat(lookup.fetch(letter.upcase, '')).concat(suffix)
     end
     translation
   end
