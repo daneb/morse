@@ -19,8 +19,8 @@ RSpec.describe Morse do
     end
 
     it 'translates a sentence with Fullstop' do
-      sentence = 'I AM IN TROUBLEFullStop'
-      result = '../.-|--/..|-./-|.-.|---|..-|-...|.-..|.|.-.-.-'
+      sentence = 'I AM IN TROUBLE Fullstop'
+      result = '../.-|--/..|-./-|.-.|---|..-|-...|.-..|./.-.-.-'
       expect(Morse.translate(sentence)).to eq result
     end
 
@@ -44,9 +44,27 @@ RSpec.describe Morse do
       expect(Morse.confound_translation(morse_code)).to eq result
     end
 
+    it 'obfuscates Comma from morse' do
+      morse = '--..--'
+      result = 'B2B'
+      expect(Morse.confound_translation(morse)).to eq result
+    end
+
+    it 'obfuscates Fullstop from morse' do
+      morse = '.-.-.-'
+      result = '1A1A1A'
+      expect(Morse.confound_translation(morse)).to eq result
+    end
+
     it 'translates and obfuscates a sentence' do
       sentence = 'I AM IN TROUBLE'
       result = '2/1A|B/2|A1/A|1A1|C|2A|A3|1A2|1'
+      expect(Morse.confound(sentence)).to eq result
+    end
+
+    it 'translates and obfuscates a sentence with Fullstop' do
+      sentence = 'I AM IN TROUBLE Fullstop'
+      result = '2/1A|B/2|A1/A|1A1|C|2A|A3|1A2|1/1A1A1A'
       expect(Morse.confound(sentence)).to eq result
     end
 
