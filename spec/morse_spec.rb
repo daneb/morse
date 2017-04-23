@@ -23,6 +23,18 @@ RSpec.describe Morse do
       result = '../.-|--/..|-./-|.-.|---|..-|-...|.-..|.|.-.-.-'
       expect(Morse.translate(sentence)).to eq result
     end
+
+    it 'translates Fullstop' do
+      word = 'Fullstop'
+      result = '.-.-.-'
+      expect(Morse.translate(word)).to eq result
+    end
+
+    it 'translates Comma' do
+      word = 'Comma'
+      result = '--..--'
+      expect(Morse.translate(word)).to eq result
+    end
   end
 
   describe 'use cases for obfuscating' do

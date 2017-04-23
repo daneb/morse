@@ -40,8 +40,12 @@ module Morse
                '8' => '---..',
                '9' => '----.',
                'Fullstop' => '.-.-.-',
-               'Comma' => '--..--' }
+               'Comma' => '--..--',
+               '.' => '.-.-.-',
+               ',' => '--..--' }
     translation = ''
+    sentence.gsub!(/Fullstop/, '.')
+    sentence.gsub!(/Comma/, ',')
     input_char_array = sentence.chars
     input_char_array.each_with_index do |letter, index|
       input = letter.strip

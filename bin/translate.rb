@@ -29,12 +29,12 @@ OptionParser.new do |parser|
   end
 end.parse!
 
-# Validation
+# Validation and Main
 if options[:words]
   puts Morse.confound(options[:words])
 elsif options[:filename]
   puts 'File does not exist' unless File.exist?(options[:filename])
-  file = File.open(options[:filename], "rb")
+  file = File.open(options[:filename], 'rb')
   contents = file.read
   puts Morse.confound(contents)
 end
