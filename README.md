@@ -22,7 +22,13 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+TODO: Write usage instructions here 
+- Error Handling
+- Alpha-Numeric check prior to processing
+- Non-functional requirement around performance (large file)
+- Clean code (single responsibility)
+- Data Source (Open/closed & Liskov)
+- Interface Segregation (Public Interface Morse)
 
 ## Development
 
