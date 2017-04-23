@@ -56,10 +56,10 @@ module Morse
   end
 
   def self.confound(morse_code)
-    # words = split_by_words morse_code
-    # words.each { |word| result << obfuscate(word) } 
-    words = '...-'
-    obfuscate_word(words, '')
+    result = ''
+    words = split_by_words morse_code
+    words.each { |word| result << obfuscate_word(word) + '/' }
+    result.chomp('/')
   end
 
   def self.dash_lookup(number)
@@ -72,11 +72,11 @@ module Morse
     }[number]
   end
 
-  def split_by_words(morse_code)
+  def self.split_by_words(morse_code)
     morse_code.split('/')
   end
 
-  def self.obfuscate_word(word, result)
+  def self.obfuscate_word(word, result = '')
     return result if word.empty?
     count = 0
     if word[0] == '.'
@@ -85,6 +85,9 @@ module Morse
     elsif word[0] == '-'
       count = word.scan(/^\-+/)[0].length
       result << dash_lookup(count.to_s)
+    elsif word[0] == '|'
+      count = 1
+      result << '|'
     end
     obfuscate_word(word[count..-1], result)
   end
