@@ -7,11 +7,11 @@ Gem::Specification.new do |spec|
   spec.name          = "morse"
   spec.version       = Morse::VERSION
   spec.authors       = ["daneb"]
-  spec.email         = ["dane.balia@hetzner.co.za"]
+  spec.email         = ["dane.balia@gmail.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{ Obfuscating Morse Code Translator }
+  spec.description   = %q{ Translates sentences into morse code then obfuscates it }
+  spec.homepage      = "http://www.github.com/daneb/morse"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
