@@ -23,7 +23,7 @@ RSpec.describe Morse do
     it 'obfuscates morse code' do
       morse_code = '../.-|--/..|-./-|.-.|---|..-|-...|.-..|.'
       result = '2/1A|B/2|A1/A|1A1|C|2A|A3|1A2|1'
-      expect(Morse.obfuscate(morse_code)).to eq result
+      expect(Morse.confound(morse_code)).to eq result
     end
   end
 

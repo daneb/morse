@@ -55,7 +55,37 @@ module Morse
     accumalator
   end
 
-  def self.obfuscate(morse_code)
-    
+  def self.confound(morse_code)
+    # words = split_by_words morse_code
+    # words.each { |word| result << obfuscate(word) } 
+    words = '...-'
+    obfuscate_word(words, '')
+  end
+
+  def self.dash_lookup(number)
+    {
+      '1' => 'A',
+      '2' => 'B',
+      '3' => 'C',
+      '4' => 'D',
+      '5' => 'E' 
+    }[number]
+  end
+
+  def split_by_words(morse_code)
+    morse_code.split('/')
+  end
+
+  def self.obfuscate_word(word, result)
+    return result if word.empty?
+    count = 0
+    if word[0] == '.'
+      count = word.scan(/^\.+/)[0].length
+      result << count.to_s
+    elsif word[0] == '-'
+      count = word.scan(/^\-+/)[0].length
+      result << dash_lookup(count.to_s)
+    end
+    obfuscate_word(word[count..-1], result)
   end
 end
