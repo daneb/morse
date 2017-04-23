@@ -41,7 +41,7 @@ module Morse
                '9' => '----.',
                'Fullstop' => '.-.-.-',
                'Comma' => '--..--' }
-    accumalator = ''
+    translation = ''
     input_char_array = sentence.chars
     input_char_array.each_with_index do |letter, index|
       input = letter.strip
@@ -50,12 +50,17 @@ module Morse
       forward_index = index + 1 < input_char_array.length ? (index + 1) : index
       suffix = '' if input_char_array[forward_index].strip.empty?
       suffix = '' if (index + 1) == input_char_array.length
-      accumalator.concat(lookup.fetch(letter, '')).concat(suffix)
+      translation.concat(lookup.fetch(letter, '')).concat(suffix)
     end
-    accumalator
+    translation
   end
 
-  def self.confound(morse_code)
+  def self.confound(sentence)
+    morse_code = translate(sentence)
+    confound_translation(morse_code)
+  end
+
+  def self.confound_translation(morse_code)
     result = ''
     words = split_by_words morse_code
     words.each { |word| result << obfuscate_word(word) + '/' }
