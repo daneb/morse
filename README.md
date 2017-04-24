@@ -30,6 +30,7 @@ TODO: Write usage instructions here
 - Data Source (Open/closed & Liskov) (x)
 - Interface Segregation (Public Interface Morse)
 - TradeOff in Readme (In Memory, Load everytime)
+- Write out to file
 
 ## Development
 
