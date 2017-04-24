@@ -29,12 +29,26 @@ OptionParser.new do |parser|
   end
 end.parse!
 
+def exit_and_notify_if_non_alphanumerics(input)
+  if contains_non_alphanumeric?(input)
+    puts 'Only alphanumerics are supported'
+    exit
+  end
+end
+
+def contains_non_alphanumeric?(data)
+  data.scan(/([^A-Za-z0-9\s])/m).count.positive?
+end
+
 # Validation and Main
 if options[:words]
+  exit_and_notify_if_non_alphanumerics(options[:words]) 
   puts Morse.confound(options[:words])
 elsif options[:filename]
   puts 'File does not exist' unless File.exist?(options[:filename])
   file = File.open(options[:filename], 'rb')
   contents = file.read
+  exit_and_notify_if_non_alphanumerics(contents)
   puts Morse.confound(contents)
 end
+
