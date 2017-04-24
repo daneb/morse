@@ -57,16 +57,23 @@ def read_source_file(file)
   file.read
 end
 
+def dump_to_file(result)
+  write_out_to_file(result)
+  puts "Result written out to file #{OUTPUT_FILE} (size= #{output_file_size})"
+end
+
 # Validation and Main
 if options[:words]
   exit_and_notify_if_non_alphanumerics(options[:words])
   result = Morse.confound(options[:words])
   puts result
+  dump_to_file(result)
+  
 elsif options[:filename]
   contents = read_source_file(options[:filename])
   exit_and_notify_if_non_alphanumerics(contents)
   result = Morse.confound(contents)
+  dump_to_file(result)
 end
 
-write_out_to_file(result)
-puts "Result written out to file #{OUTPUT_FILE} (size= #{output_file_size})"
+

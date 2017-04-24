@@ -20,21 +20,64 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here 
-- Error Handling (x)
-- Alpha-Numeric check prior to processing (x)
-- Non-functional requirement around performance (large file)
-- Clean code (single responsibility)  (x)
-- Data Source (Open/closed & Liskov) (x)
-- Interface Segregation (Public Interface Morse) (x)
-- TradeOff in Readme (In Memory, Load everytime)
-- Write out to file
+CLI is available as below.
 
-## Development
+### Help
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+```
+danebalia@furian ~/D/G/P/morse (master)> bin/translate.rb -h
+ Translate To Morse Code and Obfuscate
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+    ** Multiple words require quotes ("|'). Eg. "hello my name is"
+
+    Usage: translate.rb [options]
+
+    -h, --help                       Show this help message
+    -f, --file FILENAME              File to translate and obfuscate
+    -w, --words word(s)              Word(s) to translate and obfuscate
+Result written out to file output.txt (size= 1)
+```
+
+#### Translate and Obfuscate a Sentence
+```
+danebalia@furian ~/D/G/P/morse (master)> bin/translate.rb -w "I AM IN TROUBLE"
+2/1A|B/2|A1/A|1A1|C|2A|A3|1A2|1
+Result written out to file output.txt (size= 32)
+```
+
+#### Translate and Obfuscate with Source File
+```
+danebalia@furian ~/D/G/P/morse (master)> bin/translate.rb -f spec/sample.txt
+Result written out to file output.txt (size= 431)
+```
+*PS. (size= x) - the size of the output file after write*
+
+### Using as a Gem
+
+#### Translate Text
+
+```
+danebalia@furian ~/D/G/P/morse (master)> bundle console
+irb(main):001:0> Morse.translate_text('I AM IN TROUBLE')
+=> "../.-|--/..|-./-|.-.|---|..-|-...|.-..|."
+```
+
+#### Obfuscate Morse Code
+
+```
+irb(main):005:0> x = Morse.translate_text('I AM IN TROUBLE')
+=> "../.-|--/..|-./-|.-.|---|..-|-...|.-..|."
+irb(main):006:0> Morse.confound_translation(x)
+=> "2/1A|B/2|A1/A|1A1|C|2A|A3|1A2|1"
+```
+
+## Tests
+
+Rspec
+
+```
+# rspec
+```
 
 ## Contributing
 
