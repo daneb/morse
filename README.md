@@ -35,7 +35,6 @@ danebalia@furian ~/D/G/P/morse (master)> bin/translate.rb -h
     -h, --help                       Show this help message
     -f, --file FILENAME              File to translate and obfuscate
     -w, --words word(s)              Word(s) to translate and obfuscate
-Result written out to file output.txt (size= 1)
 ```
 
 #### Translate and Obfuscate a Sentence
