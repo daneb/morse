@@ -1,6 +1,3 @@
-require 'providers/data_provider'
-require 'byebug'
-
 module Morse
   module Obfuscation
     module Algorithms
