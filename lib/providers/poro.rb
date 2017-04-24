@@ -1,13 +1,26 @@
 module Morse
   module Providers
     class Poro
-      def query(key) 
-        db.fetch(key, '')
+      def query_morse(key) 
+        db_morse.fetch(key, '')
+      end
+
+      def query_dash(key)
+        db_dash.fetch(key, '')
       end
 
       private
+      def db_dash
+        {
+          '1' => 'A',
+          '2' => 'B',
+          '3' => 'C',
+          '4' => 'D',
+          '5' => 'E' 
+        }
+      end
 
-      def db
+      def db_morse
         { 'A' => '.-',
           'B' => '-...',
           'C' => '-.-.',

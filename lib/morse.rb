@@ -3,7 +3,8 @@ require 'providers/data_provider'
 require 'byebug'
 
 module Morse
-  extend Providers::DataProvider 
+  extend Providers::DataProvider
+
   def self.translate(sentence)
     translation = ''
     sentence.gsub!(/Fullstop/, '.')
@@ -16,7 +17,7 @@ module Morse
       forward_index = index + 1 < input_char_array.length ? (index + 1) : index
       suffix = '' if input_char_array[forward_index].strip.empty?
       suffix = '' if (index + 1) == input_char_array.length
-      translation.concat(lookup(letter.upcase)).concat(suffix)
+      translation.concat(morse_lookup(letter.upcase)).concat(suffix)
     end
     translation
   end
@@ -33,15 +34,6 @@ module Morse
     result.chomp('/')
   end
 
-  def self.dash_lookup(number)
-    {
-      '1' => 'A',
-      '2' => 'B',
-      '3' => 'C',
-      '4' => 'D',
-      '5' => 'E' 
-    }[number]
-  end
 
   def self.split_by_words(morse_code)
     morse_code.split('/')
