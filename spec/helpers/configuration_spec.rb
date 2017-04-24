@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe 'Configuration' do
+RSpec.describe Morse::Helpers::Configuration do
   MH = Morse::Helpers
 
   it 'loads datasource provider from configuration' do
