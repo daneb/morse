@@ -51,11 +51,14 @@ def output_file_size
   File.size(OUTPUT_FILE)
 end
 
-def read_source_file(file)
+def validate_file(file)
   unless File.exist?(file)
-    puts 'File does not exist'
+    puts 'File does not exist' 
     exit
   end
+end
+
+def read_source_file(file)
   file = File.open(file, 'rb')
   file.read
 end
@@ -78,6 +81,7 @@ if options[:words]
   puts result
   dump_to_file(result)
 elsif options[:filename]
+  validate_file(options[:filename])
   contents = read_source_file(options[:filename])
   exit_and_notify_if_non_alphanumerics(contents)
   result = execute(contents)
