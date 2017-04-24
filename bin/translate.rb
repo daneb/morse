@@ -4,11 +4,12 @@ require 'optparse'
 require 'bundler/setup'
 require 'morse'
 
+OUTPUT_FILE = 'output.txt'.freeze
+
 # This will hold the options we parse
 options = {}
 
 OptionParser.new do |parser|
-
   parser.banner = %( Translate To Morse Code and Obfuscate
 
     ** Multiple words require quotes ("|'). Eg. "hello my name is"
@@ -40,15 +41,32 @@ def contains_non_alphanumeric?(data)
   data.scan(/([^A-Za-z0-9\s])/m).count.positive?
 end
 
+def write_out_to_file(result)
+  File.open(OUTPUT_FILE, 'w') do |file|
+    file.puts result
+  end
+end
+
+def output_file_size
+  File.size(OUTPUT_FILE)
+end
+
+def read_source_file(file)
+  puts 'File does not exist' unless File.exist?(file)
+  file = File.open(file, 'rb')
+  file.read
+end
+
 # Validation and Main
 if options[:words]
   exit_and_notify_if_non_alphanumerics(options[:words])
-  puts Morse.confound(options[:words])
+  result = Morse.confound(options[:words])
+  puts result
 elsif options[:filename]
-  puts 'File does not exist' unless File.exist?(options[:filename])
-  file = File.open(options[:filename], 'rb')
-  contents = file.read
+  contents = read_source_file(options[:filename])
   exit_and_notify_if_non_alphanumerics(contents)
-  puts Morse.confound(contents)
+  result = Morse.confound(contents)
 end
 
+write_out_to_file(result)
+puts "Result written out to file #{OUTPUT_FILE} (size= #{output_file_size})"
