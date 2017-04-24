@@ -37,7 +37,7 @@ RSpec.describe Morse do
     end
   end
 
-  describe 'use cases for obfuscating' do
+  describe 'use cases for obfuscating morse code' do
     it 'obfuscates morse code' do
       morse_code = '../.-|--/..|-./-|.-.|---|..-|-...|.-..|.'
       result = '2/1A|B/2|A1/A|1A1|C|2A|A3|1A2|1'
@@ -55,7 +55,9 @@ RSpec.describe Morse do
       result = '1A1A1A'
       expect(Morse.confound_translation(morse)).to eq result
     end
+  end
 
+  describe 'use cases for obfuscating from english' do
     it 'translates and obfuscates a sentence' do
       sentence = 'I AM IN TROUBLE'
       result = '2/1A|B/2|A1/A|1A1|C|2A|A3|1A2|1'
@@ -76,6 +78,10 @@ RSpec.describe Morse do
   end
 
   describe 'error handling' do
+    it 'raises an error if there is an alphanumeric' do
+      word = 'HELLO.=""'
+      expect{ Morse.translate_text(word) }.to raise_error Morse::Helpers::Error
+    end
   end
 
   describe 'non-functional requirements' do
