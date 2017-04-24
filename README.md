@@ -79,6 +79,14 @@ Rspec
 # rspec
 ```
 
+## Trade Offs
+1. Lookup tables are plain old ruby objects 
+    - To compensate added flexibility to provide alternate models using dynamic class injection
+2. Do not have supporting tests for CLI (bin/translate.rb)
+3. Main (morse.rb) extends behavior for Translation and Obfuscation (pluggability)
+4. Obfuscator has another layer of indirection to support alternative obfuscation strategies
+6. Have a **hack** to support FullStop and Comma. Given dependence of 'char' enumeration in the algorithms, gsub replace FullStop with . and Comma with , (reference providers/poro.rb and helpers/sanitize.rb)
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/morse. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
