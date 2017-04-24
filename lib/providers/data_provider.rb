@@ -1,13 +1,12 @@
 require 'yaml'
 require 'providers/poro'
-require 'byebug'
+require 'helpers/configuration'
 
 module Morse
   module Providers
     module DataProvider
       def lookup(key)
-        byebug
-        config = YAML::load_file('config/environment.yml')
+        config = Morse::Helpers::Configuration.load_config
         @data_access = Object.const_get(config['datasource']['type']).new
         @data_access.query(key)
       end
