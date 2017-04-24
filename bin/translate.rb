@@ -42,7 +42,7 @@ end
 
 # Validation and Main
 if options[:words]
-  exit_and_notify_if_non_alphanumerics(options[:words]) 
+  exit_and_notify_if_non_alphanumerics(options[:words])
   puts Morse.confound(options[:words])
 elsif options[:filename]
   puts 'File does not exist' unless File.exist?(options[:filename])

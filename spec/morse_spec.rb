@@ -9,31 +9,31 @@ RSpec.describe Morse do
     it 'translates a simple sentence into morse code' do
       sentence = 'I AM IN TROUBLE'
       result = '../.-|--/..|-./-|.-.|---|..-|-...|.-..|.'
-      expect(Morse.translate(sentence)).to eq result
+      expect(Morse.translate_text(sentence)).to eq result
     end
 
     it 'translates a sentence ignoring multiple spaces' do
       sentence = 'I  AM    IN     TROUBLE    '
       result = '../.-|--/..|-./-|.-.|---|..-|-...|.-..|.'
-      expect(Morse.translate(sentence)).to eq result
+      expect(Morse.translate_text(sentence)).to eq result
     end
 
     it 'translates a sentence with Fullstop' do
       sentence = 'I AM IN TROUBLE Fullstop'
       result = '../.-|--/..|-./-|.-.|---|..-|-...|.-..|./.-.-.-'
-      expect(Morse.translate(sentence)).to eq result
+      expect(Morse.translate_text(sentence)).to eq result
     end
 
     it 'translates Fullstop' do
       word = 'Fullstop'
       result = '.-.-.-'
-      expect(Morse.translate(word)).to eq result
+      expect(Morse.translate_text(word)).to eq result
     end
 
     it 'translates Comma' do
       word = 'Comma'
       result = '--..--'
-      expect(Morse.translate(word)).to eq result
+      expect(Morse.translate_text(word)).to eq result
     end
   end
 
