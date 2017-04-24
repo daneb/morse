@@ -52,9 +52,18 @@ def output_file_size
 end
 
 def read_source_file(file)
-  puts 'File does not exist' unless File.exist?(file)
+  unless File.exist?(file)
+    puts 'File does not exist'
+    exit
+  end
   file = File.open(file, 'rb')
   file.read
+end
+
+def execute(text)
+  Morse.confound(text)
+rescue => e
+  puts "Unexpected error: #{e.message}"
 end
 
 def dump_to_file(result)
@@ -65,14 +74,13 @@ end
 # Validation and Main
 if options[:words]
   exit_and_notify_if_non_alphanumerics(options[:words])
-  result = Morse.confound(options[:words])
+  result = execute(options[:words])
   puts result
   dump_to_file(result)
-  
 elsif options[:filename]
   contents = read_source_file(options[:filename])
   exit_and_notify_if_non_alphanumerics(contents)
-  result = Morse.confound(contents)
+  result = execute(contents)
   dump_to_file(result)
 end
 
