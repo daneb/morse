@@ -13,4 +13,5 @@ RSpec.configure do |config|
   MH = Morse::Helpers
   MOA = Morse::Obfuscation::Algorithms
   MP = Morse::Providers
+  MT = Morse::Translation
 end
