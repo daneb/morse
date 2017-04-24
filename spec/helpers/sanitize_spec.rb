@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 RSpec.describe Morse::Helpers::Sanitize do
-  MH = Morse::Helpers
+  # MH = Morse::Helpers
 
   it 'string replaces Fullstop and Comma' do
     content = 'FullstopComma'

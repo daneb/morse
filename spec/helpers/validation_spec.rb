@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 RSpec.describe Morse::Helpers::Validation do
-  MH = Morse::Helpers
+  # MH = Morse::Helpers
 
   it 'determines if there are non-alphanumerics in a string' do
     content = 'Symphony No.9, is a rather fantastical beast'

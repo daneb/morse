@@ -1,7 +1,8 @@
 require 'spec_helper'
 
 RSpec.describe Morse::Helpers::Configuration do
-  MH = Morse::Helpers
+
+  # MH = Morse::Helpers
 
   it 'loads datasource provider from configuration' do
     expect(MH::Configuration.load_config['datasource'].key?('type')).to eq true

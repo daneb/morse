@@ -20,7 +20,7 @@ module Morse
             count = count_of_dots(word)
             result << count.to_s
           elsif word[0] == '-'
-            count = lookup_dash_count(word)
+            count = count_of_dashes(word)
             result << Providers::DataProvider.dash_lookup(count.to_s)
           elsif word[0] == '|'
             count = 1
@@ -33,7 +33,7 @@ module Morse
           word.scan(/^\.+/)[0].length
         end
 
-        def self.lookup_dash_count(word)
+        def self.count_of_dashes(word)
           word.scan(/^\-+/)[0].length
         end
       end

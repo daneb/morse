@@ -23,12 +23,12 @@ Or install it yourself as:
 ## Usage
 
 TODO: Write usage instructions here 
-- Error Handling
+- Error Handling (x)
 - Alpha-Numeric check prior to processing (x)
 - Non-functional requirement around performance (large file)
-- Clean code (single responsibility) 
+- Clean code (single responsibility)  (x)
 - Data Source (Open/closed & Liskov) (x)
-- Interface Segregation (Public Interface Morse)
+- Interface Segregation (Public Interface Morse) (x)
 - TradeOff in Readme (In Memory, Load everytime)
 - Write out to file
 
