@@ -78,6 +78,8 @@ Rspec
 # rspec
 ```
 
+CI can be found [here](https://travis-ci.org/daneb/morse)
+
 ## Trade Offs
 1. Lookup tables are plain old ruby objects 
     - To compensate added flexibility to provide alternate models using dynamic class injection
