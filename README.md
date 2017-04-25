@@ -1,4 +1,5 @@
 # Morse
+[![Build Status](https://travis-ci.org/daneb/morse.svg?branch=master)](https://travis-ci.org/daneb/morse)
 
 Translates to morse code with ability to obfuscate
 
